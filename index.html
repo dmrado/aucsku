@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Login form</title>
+	<link href="css/form_login.css" type="text/css" rel="stylesheet"/>
+</head>
+	<body>
+
+		<div class="row" id="form">
+			<!--Заголовок входа на сайт-->
+			<h1>Добро пожаловать в систему контроля тендерных отгрузок</h1>
+			<form action="milestone.php" method="post">
+				<!--заголовок к радиокнопкам уровня доступа-->
+				<h2>Пожалуйста авторизуйтесь</h2>
+
+				<!--форма вввода логина и пароля-->
+				<div class="row">
+					<p><label for="userlogin">Логин</label></p>
+					<input type="text" name="userlogin" placeholder="Введите логин..." maxlength="15" id="userlogin"/>
+				</div>
+				<div class="row">
+					<p><label for="userpassword">Пароль</label></p>
+					<input type="password" name="userpassword" placeholder="Введите пароль..." maxlength="15" id="userpassword"/>
+				</div>
+				<!--	<div class="row">
+					<p><label for="role"></label>Выберите вариант</p>
+					<input type="radio" name="entrance1" value="entrance" id="role" checked/>Вход
+					<p><label for="role1"></label></p>
+					<input type="radio" name="entrance1" value="reg" id="role1"/>Регистрация
+				</div>-->
+				<p>
+					<!--Делаем кнопку "Отправить" и "Сбросить"-->
+				<input type="submit" name="submit" value="Войти"/>
+
+					<!--<input type="reset" name="reset" value="Сбросить"/>
+				</p>-->
+				<p><span>ВНИМАНИЕ: храните пароль в недоступном для посторонних месте</span></p>
+			</form>
+		</div>
+
+	<!--<img id="Milestone" src="images/sign-2792576_640.png" alt="Milestone"/>Milestone-->
+	</body>
+</html>

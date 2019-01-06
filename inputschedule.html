@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Input shedule</title>
+    <link href="css/form_inputshedule.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<form action="inputschedule.php" method="post">
+    <div class="row" id="form">
+<!--<div id="two-column">-->
+<h1>Форма ввода графика поставки</h1>
+<h2>Введите данные графика поставки:</h2>
+
+        <span class="row">Аукцион
+        <input type="text" class="text" name="numauc" value="" placeholder="номер аукциона" size="20"/></span>
+
+        <span class="row">Продукт<input type="text" class="text" name="skucode" value="" placeholder="skucode"/></span><br/>
+
+        <p>Номера поставки <span>разделяя их только пробелом</span></p>
+        <textarea name="shedule_num" placeholder="1 2 3" rows="2" cols="50" maxlength="100"/></textarea><br/>
+
+        <p>Количество поставки соответственно дате по порядку <span>разделяя их только пробелом</span></p>
+        <textarea name="shedule_qty" placeholder="1000 2000 1500" rows="3" cols="50" maxlength="100"/></textarea></p> <br/>
+
+        <p>Введите даты поставки <span><strong>строго по порядку соответственно номерам поставки и количествам поставки</strong></span></p>
+
+        <span class="row">поставка 01
+        <input type="date" class="text" name="date1" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 02
+        <input type="date" class="text" name="date2" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 03
+        <input type="date" class="text" name="date3" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 04
+        <input type="date" class="text" name="date4" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 05
+        <input type="date" class="text" name="date5" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 06
+        <input type="date" class="text" name="date6" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 07
+        <input type="date" class="text" name="date7" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 08
+        <input type="date" class="text" name="date8" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 09
+        <input type="date" class="text" name="date9" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 10
+        <input type="date" class="text" name="date10" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 11
+       <input type="date" class="text" name="date11" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <span class="label">поставка 12
+        <input type="date" class="text" name="date12" value="" placeholder="yyyy.mm.dd"/></span><br/>
+
+        <p><input type="submit" value="Записать"></p>
+
+        <!-- надо или нет это здесь? <input type="hidden" id="text" name="userid" value="' . $_SESSION['userid'] . '"/>  -->
+
+        <br/>
+        <p><a href="milestone.php">Вернуться</a></p>
+        <br/>
+        <p><input type="reset" value="Сбросить форму"></p>
+
+    </div>
+</form>
+
+</body>
+</html>

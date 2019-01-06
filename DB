@@ -1,0 +1,416 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.3
+-- https://www.phpmyadmin.net/
+--
+-- Хост: localhost:8889
+-- Время создания: Янв 05 2019 г., 12:05
+-- Версия сервера: 5.6.35
+-- Версия PHP: 7.1.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- База данных: `aucsku`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `auction`
+--
+
+CREATE TABLE `auction` (
+  `auctionid` int(10) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `dateauc` date DEFAULT NULL,
+  `skucode` int(7) NOT NULL,
+  `qtyauc` int(10) NOT NULL,
+  `priceauc` decimal(10,2) NOT NULL,
+  `amountauc` decimal(10,2) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `lawauc` int(3) DEFAULT NULL,
+  `remarkauc` text,
+  `dateinputauc` date NOT NULL,
+  `usepipinputauc` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `auction`
+--
+
+INSERT INTO `auction` (`auctionid`, `numauc`, `dateauc`, `skucode`, `qtyauc`, `priceauc`, `amountauc`, `userid`, `lawauc`, `remarkauc`, `dateinputauc`, `usepipinputauc`) VALUES
+(130, '55500055555', '2018-04-17', 1115115, 10000, '150.00', '1500000.00', 1, 223, 'Тестовый апрель 2018', '0000-00-00', ''),
+(129, '2222222', '2018-03-07', 1115115, 100, '200.00', '20000.00', 1, 44, ' ', '0000-00-00', ''),
+(128, '1111111', '2018-03-01', 1115115, 100, '100.00', '10000.00', 1, 44, ' ТЕСТ', '0000-00-00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `aucupdate`
+--
+
+CREATE TABLE `aucupdate` (
+  `auctionid` int(10) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `dateauc` date NOT NULL,
+  `skucode` int(7) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `remarkupdate` text,
+  `dateupdateauc` date DEFAULT NULL,
+  `useripupdateauc` text
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `collation`
+--
+
+CREATE TABLE `collation` (
+  `id` int(10) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `numinv` int(7) NOT NULL,
+  `skucode` varchar(7) NOT NULL,
+  `userid` varchar(8) DEFAULT NULL,
+  `remark` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `collation`
+--
+
+INSERT INTO `collation` (`id`, `numauc`, `numinv`, `skucode`, `userid`, `remark`) VALUES
+(1, '0', 0, '0', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `distribs`
+--
+
+CREATE TABLE `distribs` (
+  `distr` varchar(50) NOT NULL,
+  `distrid` int(7) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `distribs`
+--
+
+INSERT INTO `distribs` (`distr`, `distrid`) VALUES
+('Дистриб 1', 11111),
+('Дистриб 2', 22222);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `invoice`
+--
+
+CREATE TABLE `invoice` (
+  `invoiceid` int(12) NOT NULL,
+  `numinv` int(7) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `dateinv` date DEFAULT NULL,
+  `qtyinv` int(25) NOT NULL,
+  `skucode` varchar(7) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `distr` varchar(50) DEFAULT NULL,
+  `remarkinv` tinytext
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `invoice`
+--
+
+INSERT INTO `invoice` (`invoiceid`, `numinv`, `numauc`, `dateinv`, `qtyinv`, `skucode`, `userid`, `distr`, `remarkinv`) VALUES
+(78, 111115, '1111111', '2018-05-24', 2, '1115115', 1, 'Дистриб 1', ''),
+(77, 111114, '1111111', '2018-05-24', 432, '1115115', 1, '', ''),
+(76, 2222222, '1111111', '2018-05-17', 22, '1115115', 1, '', ''),
+(75, 2222221, '1111111', '2018-05-23', 3, '1115115', 1, 'Дистриб 2', ''),
+(74, 1111114, '1111111', '2018-05-22', 3, '1115115', 1, '', ''),
+(73, 1111117, '1111111', '2018-05-23', 123, '1115115', 1, '', ''),
+(72, 1111117, '1111111', '2018-05-23', 12, '1115115', 1, '', ''),
+(71, 1111117, '1111111', '2018-05-15', 111111, '1115115', 1, '', ''),
+(70, 1111114, '1111111', '2018-05-08', 1, '1115115', 1, '', ''),
+(69, 1111114, '1111111', '2018-05-08', 1, '1115115', 1, '', ''),
+(67, 1111114, '1111111', '2018-05-08', 1, '1115115', 1, '', ''),
+(68, 1111114, '1111111', '2018-05-08', 1, '1115115', 1, '', ''),
+(66, 1111114, '1111111', '2018-05-08', 1, '1115115', 1, '', ''),
+(64, 1111114, '1111111', '2018-03-09', 10, '1115115', 1, 'Дистриб 1', ''),
+(65, 1111115, '1111111', '2018-03-06', 100, '1115115', 1, 'Дистриб 1', ''),
+(63, 1111113, '1111111', '0000-00-00', 10, '1115115', 1, 'Дистриб 1', ''),
+(61, 1111111, '1111111', '2018-02-26', 10, '1115115', 1, 'Дистриб 1', ''),
+(62, 1111112, '1111111', '2018-03-08', 10, '1115115', 1, 'Дистриб 1', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `invoiceprice`
+--
+
+CREATE TABLE `invoiceprice` (
+  `invpriceid` int(10) NOT NULL,
+  `priceinv` double NOT NULL,
+  `amountinv` double NOT NULL,
+  `skucode` int(7) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `qtyinv` int(25) NOT NULL,
+  `numinv` int(7) NOT NULL,
+  `seria` varchar(10) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `invoiceprice`
+--
+
+INSERT INTO `invoiceprice` (`invpriceid`, `priceinv`, `amountinv`, `skucode`, `numauc`, `qtyinv`, `numinv`, `seria`) VALUES
+(38, 101, 1112111, 1115115, '1111111', 11011, 1111114, '3333333'),
+(37, 50, 5000, 1115115, '1111111', 100, 1111115, '123456A'),
+(36, 91, 910, 1115115, '1111111', 10, 1111114, '123236D'),
+(35, 90, 900, 1115115, '1111111', 10, 1111113, '345678S'),
+(34, 90, 900, 1115115, '1111111', 10, 1111112, '123456D'),
+(33, 90, 900, 1115115, '1111111', 10, 1111111, '345FRNB'),
+(39, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(40, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(41, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(42, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(43, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(44, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(45, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(46, 1, 1, 1115115, '1111111', 1, 1111114, '1234567'),
+(47, 3, 333333, 1115115, '1111111', 111111, 1111117, '2348765'),
+(48, 12, 144, 1115115, '1111111', 12, 1111117, '1116543'),
+(49, 2, 246, 1115115, '1111111', 123, 1111117, '654322'),
+(50, 33, 99, 1115115, '1111111', 3, 1111114, '7654333'),
+(51, 3, 9, 1115115, '1111111', 3, 2222221, '222212'),
+(52, 3, 9, 1115115, '1111111', 3, 1111114, '456733'),
+(53, 22, 484, 1115115, '1111111', 22, 2222222, '12345'),
+(54, 43, 18576, 1115115, '1111111', 432, 111114, '65432'),
+(55, 43, 18576, 1115115, '1111111', 432, 111114, '65432'),
+(56, 6, 36, 1115115, '1111111', 6, 111114, '3456787'),
+(57, 2, 4, 1115115, '1111111', 2, 111115, '765433');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `product`
+--
+
+CREATE TABLE `product` (
+  `skucode` int(7) NOT NULL,
+  `prodname` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `product`
+--
+
+INSERT INTO `product` (`skucode`, `prodname`) VALUES
+(1090143, 'Eleflox Inf. 500 mg / 100 ml'),
+(1115025, 'Aleval tabs. 50mg №28'),
+(1115026, 'Aleval tabs. 100mg №14'),
+(1115028, 'Zeptol retard 400mg №30'),
+(1115029, 'Zeptol retard 200mg №30'),
+(1115030, 'Clofranil tabs.25mg №50'),
+(1115112, 'Octreotide Sun inj. 100mcg №1'),
+(1115114, 'Senorm LA 50mg/ml №5                                                         '),
+(1115115, 'Syndopa tabs. 275mg №50                            '),
+(1115133, 'Encorate tabs. 300mg №100                                 '),
+(1115135, 'Encorate Chrono 300mg №30                     '),
+(1115136, 'Encorate Chrono 500mg №30                     '),
+(1115137, 'Prajisun 100 Caps'),
+(1115138, 'Prajisun 200 Caps'),
+(1115147, 'Ivepred 500 mg №1'),
+(1115148, 'Ivepred 1000 mg №1'),
+(1115156, 'Sunpraz 40mg inj. №1');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `shedule`
+--
+
+CREATE TABLE `shedule` (
+  `shedule_id` int(10) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `skucode` int(7) NOT NULL,
+  `shedule_date` date NOT NULL,
+  `shedule_qty` int(10) NOT NULL,
+  `remarkshedule` text,
+  `shedule_num` int(2) DEFAULT NULL,
+  `shedulefield2` varchar(25) DEFAULT NULL,
+  `shedulefield3` varchar(25) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='график поставки';
+
+--
+-- Дамп данных таблицы `shedule`
+--
+
+INSERT INTO `shedule` (`shedule_id`, `numauc`, `skucode`, `shedule_date`, `shedule_qty`, `remarkshedule`, `shedule_num`, `shedulefield2`, `shedulefield3`) VALUES
+(24, '1111111', 1115115, '2018-03-09', 1000, '', 0, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `shedule1`
+--
+
+CREATE TABLE `shedule1` (
+  `sheduleid` int(10) NOT NULL,
+  `numauc` varchar(19) NOT NULL,
+  `skucode` int(7) NOT NULL,
+  `first` date NOT NULL,
+  `second` date DEFAULT NULL,
+  `third` date DEFAULT NULL,
+  `fourth` date DEFAULT NULL,
+  `fifth` date DEFAULT NULL,
+  `sixth` date DEFAULT NULL,
+  `seventh` date DEFAULT NULL,
+  `eighth` date DEFAULT NULL,
+  `ninth` date DEFAULT NULL,
+  `tenth` date DEFAULT NULL,
+  `eleventh` date DEFAULT NULL,
+  `twelfth` date DEFAULT NULL,
+  `firstqty` int(7) NOT NULL,
+  `secondqty` int(7) DEFAULT NULL,
+  `thirdqty` int(7) DEFAULT NULL,
+  `fourthqty` int(7) DEFAULT NULL,
+  `fifthqty` int(7) DEFAULT NULL,
+  `sixthqty` int(7) DEFAULT NULL,
+  `seventhqty` int(7) DEFAULT NULL,
+  `eighthqty` int(7) DEFAULT NULL,
+  `ninthqty` int(7) DEFAULT NULL,
+  `tenthqty` int(7) DEFAULT NULL,
+  `eleventhqty` int(7) DEFAULT NULL,
+  `twelfthqty` int(7) DEFAULT NULL,
+  `remarkshedule` text,
+  `shedulefield1` varchar(25) DEFAULT NULL,
+  `shedulefield2` varchar(25) DEFAULT NULL,
+  `shedulefield3` varchar(25) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='график поставки';
+
+--
+-- Дамп данных таблицы `shedule1`
+--
+
+INSERT INTO `shedule1` (`sheduleid`, `numauc`, `skucode`, `first`, `second`, `third`, `fourth`, `fifth`, `sixth`, `seventh`, `eighth`, `ninth`, `tenth`, `eleventh`, `twelfth`, `firstqty`, `secondqty`, `thirdqty`, `fourthqty`, `fifthqty`, `sixthqty`, `seventhqty`, `eighthqty`, `ninthqty`, `tenthqty`, `eleventhqty`, `twelfthqty`, `remarkshedule`, `shedulefield1`, `shedulefield2`, `shedulefield3`) VALUES
+(24, '1111111', 1115115, '2018-03-09', '2018-04-03', '2018-05-07', '2018-06-04', '2018-07-02', '2018-07-03', '2018-08-06', '2018-09-03', '2018-09-21', '2018-09-30', '2018-10-08', '2018-12-18', 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 2, 6, '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `userid` int(10) NOT NULL,
+  `userlogin` varchar(32) NOT NULL,
+  `userpassword` varchar(32) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `role` int(4) NOT NULL,
+  `usersfield1` varchar(25) NOT NULL,
+  `usersfield2` varchar(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`userid`, `userlogin`, `userpassword`, `email`, `username`, `role`, `usersfield1`, `usersfield2`) VALUES
+(1, 'Radovich', '8501f0b4a92563b51855465f7edf1e58', 'dmitry.radovich@sunpharma.com', 'Radovich Dmitrii', 1, '', ''),
+(2, 'topy', 'd2fc005b5369a1518a8c6ebc9be0ba91', 'mail@crypt.ru', 'Роман', 1, '', ''),
+(3, 'user3', '8501f0b4a92563b51855465f7edf1e58', 'dmrado@ya.ru', 'user3', 2, '', '');
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `auction`
+--
+ALTER TABLE `auction`
+  ADD PRIMARY KEY (`auctionid`),
+  ADD KEY `numauc` (`numauc`);
+
+--
+-- Индексы таблицы `collation`
+--
+ALTER TABLE `collation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `skucode` (`skucode`),
+  ADD KEY `userid` (`userid`);
+
+--
+-- Индексы таблицы `invoice`
+--
+ALTER TABLE `invoice`
+  ADD PRIMARY KEY (`invoiceid`),
+  ADD KEY `invoiceid` (`invoiceid`);
+
+--
+-- Индексы таблицы `invoiceprice`
+--
+ALTER TABLE `invoiceprice`
+  ADD PRIMARY KEY (`invpriceid`),
+  ADD UNIQUE KEY `invpriceid` (`invpriceid`);
+
+--
+-- Индексы таблицы `shedule`
+--
+ALTER TABLE `shedule`
+  ADD PRIMARY KEY (`shedule_id`);
+
+--
+-- Индексы таблицы `shedule1`
+--
+ALTER TABLE `shedule1`
+  ADD PRIMARY KEY (`sheduleid`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userid`) USING BTREE;
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `auction`
+--
+ALTER TABLE `auction`
+  MODIFY `auctionid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+--
+-- AUTO_INCREMENT для таблицы `collation`
+--
+ALTER TABLE `collation`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT для таблицы `invoice`
+--
+ALTER TABLE `invoice`
+  MODIFY `invoiceid` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+--
+-- AUTO_INCREMENT для таблицы `invoiceprice`
+--
+ALTER TABLE `invoiceprice`
+  MODIFY `invpriceid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+--
+-- AUTO_INCREMENT для таблицы `shedule`
+--
+ALTER TABLE `shedule`
+  MODIFY `shedule_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT для таблицы `shedule1`
+--
+ALTER TABLE `shedule1`
+  MODIFY `sheduleid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `userid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
